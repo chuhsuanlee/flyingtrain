@@ -1,10 +1,5 @@
 # -*- coding: utf-8 -*-
-import os
-
 import ijson
-
-os.chdir('/usr/src/app/raw_data')
-test_file = 'test.txt'
 
 model = None
 
@@ -44,7 +39,7 @@ model_flag = 0
 options = {1: add_car, 2: add_train, 3: add_plane}
 
 
-def extract_data():
+def extract_data(test_file):
     global model, model_flag
     for prefix, event, value in ijson.parse(open(test_file)):
         if prefix.endswith('.model'):
@@ -73,9 +68,10 @@ def extract_data():
         elif prefix.endswith('.item') and event == 'end_map':
             options[model_flag]()
 
+    console_output()
 
-if __name__ == "__main__":
-    extract_data()
+
+def console_output():
     print '"planes":', plane_capacity
     print '"trains":', train_capacity
     print '"cars":', car_capacity

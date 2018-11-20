@@ -5,10 +5,9 @@ IMAGE_NAMESPACE := chuhsuanlee
 IMAGE_REPO := $(IMAGE_NAMESPACE)/$(IMAGE_NAME)
 
 WORKDIR := $(shell pwd)
-DATA_PATH := $(WORKDIR)/raw_data
 FLAG := \
 	-v /etc/localtime:/etc/localtime \
-	-v $(DATA_PATH):/usr/src/app/raw_data
+	-v $(WORKDIR):/usr/src
 
 # Followings are the Make commands that can be used.
 
