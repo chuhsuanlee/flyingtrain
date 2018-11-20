@@ -1,3 +1,6 @@
+# raw json txt file
+raw_data/
+
 # git
 .git
 .gitignore
