@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import ijson
 
+name = "flyingtrain"
 model = None
 
 car_capacity = 0
