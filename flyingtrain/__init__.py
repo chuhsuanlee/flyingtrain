@@ -2,46 +2,25 @@
 import ijson
 
 name = "flyingtrain"
-model = None
-
-car_capacity = 0
-car = {"passenger-capacity": 0}
-
-train_capacity = 0
-train = {"number-wagons": 0, "w-passenger-capacity": 0}
-
-plane_capacity = 0
-plane = {"b-passenger-capacity": 0, "e-passenger-capacity": 0}
-
-distinct_cars = set()
-distinct_trains = set()
-distinct_planes = set()
-
-
-def add_car():
-    global car_capacity
-    car_capacity += car["passenger-capacity"]
-    distinct_cars.add(model)
-
-
-def add_train():
-    global train_capacity
-    train_capacity += (train["number-wagons"] * train["w-passenger-capacity"])
-    distinct_trains.add(model)
-
-
-def add_plane():
-    global plane_capacity
-    plane_capacity += (plane["b-passenger-capacity"] + plane["e-passenger-capacity"])
-    distinct_planes.add(model)
-
-
-model_flag = 0
-options = {1: add_car, 2: add_train, 3: add_plane}
 
 
 def extract_data(test_file):
-    global model, model_flag
+    model = None
+    model_flag = 0  # 1: car, 2: train, 3: planes
+
+    car_capacity = 0
+    car = {"passenger-capacity": 0}
+
+    train_capacity = 0
+    train = {"number-wagons": 0, "w-passenger-capacity": 0}
+
+    plane_capacity = 0
+    plane = {"b-passenger-capacity": 0, "e-passenger-capacity": 0}
+
+    distinct_cars = set()
+    distinct_trains = set()
+    distinct_planes = set()
+
     for prefix, event, value in ijson.parse(open(test_file)):
         if prefix.endswith('.model'):
             model = value
@@ -67,12 +46,16 @@ def extract_data(test_file):
             plane["e-passenger-capacity"] = value
 
         elif prefix.endswith('.item') and event == 'end_map':
-            options[model_flag]()
+            if model_flag == 1:
+                car_capacity += car["passenger-capacity"]
+                distinct_cars.add(model)
+            if model_flag == 2:
+                train_capacity += (train["number-wagons"] * train["w-passenger-capacity"])
+                distinct_trains.add(model)
+            if model_flag == 3:
+                plane_capacity += (plane["b-passenger-capacity"] + plane["e-passenger-capacity"])
+                distinct_planes.add(model)
 
-    console_output()
-
-
-def console_output():
     print '"planes":', plane_capacity
     print '"trains":', train_capacity
     print '"cars":', car_capacity
