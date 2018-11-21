@@ -29,6 +29,9 @@ help:
 	@echo "    run"
 	@echo "        Create container and perform task."
 	@echo
+	@echo "    runbenchmark"
+	@echo "        Create container and perform benchmark."
+	@echo
 
 .PHONY: build
 build:
@@ -53,3 +56,10 @@ run: build
 	$(DOCKER) run \
 		--rm ${FLAG} \
 		$(IMAGE_REPO)
+
+.PHONY: runbenchmark
+runbenchmark: build
+	$(DOCKER) run \
+		--rm ${FLAG} \
+		--entrypoint python \
+		$(IMAGE_REPO) "benchmark.py"
