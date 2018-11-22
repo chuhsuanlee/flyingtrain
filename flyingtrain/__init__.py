@@ -59,7 +59,7 @@ def extract_data(test_file):
     print '"planes":', plane_capacity
     print '"trains":', train_capacity
     print '"cars":', car_capacity
-    print '\n'
+    print ''
     print '"distinct-cars":', len(distinct_cars)
     print '"distinct-planes":', len(distinct_planes)
     print '"distinct-trains":', len(distinct_trains)
