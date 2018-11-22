@@ -42,7 +42,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 "distinct-trains": 1
 ```
 _Docker solution_<br>
-Edit the `test_file` in [main.py](main.py#L4) and execute `make run`, the file should be put in the same folder with `main.py`. Volume binding can be used like [this line](Makefile#L10) in Makefile to avoid copying the file, but it's not implemented here while taking docker as a supplementary solution.
+Copy the data file to the root folder, assign the file name to [test_file](main.py#L4) in `main.py` and execute `make run`. Volume binding can be used like [this line](Makefile#L10) in Makefile to avoid copying the file, but it's not implemented here while taking docker as a supplementary solution.
 
 ## Benchmark
 The following command is used in the terminal to show how much time it takes to retrieve the data
@@ -54,10 +54,10 @@ the result
 1000 loops, best of 3: 684 usec per loop
 ```
 which means it takes around 684 usec for executing once<br>
-<br>
+
 _Docker solution_<br>
-Edit the `test_file` in [benchmark.py](benchmark.py#L4) and execute `make runbenchmark`. Again, volume binding is not implemented here, so the file should be put in the same folder with `benchmark.py`.<br>
-<br>
+Assign the file name to [test_file](benchmark.py#L4) in `benchmark.py` and execute `make runbenchmark`. Again, volume binding is not implemented here, so the file should be put under the root folder.<br>
+
 _the result of the docker solution_
 ```
 [0.6676740646362305, 0.6634271144866943, 0.6310489177703857]
