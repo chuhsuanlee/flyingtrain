@@ -42,7 +42,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 "distinct-planes": 2
 "distinct-trains": 1
 ```
-_Docker solution_
+_Docker solution_<br>
 Edit the `test_file` in [main.py](main.py#L4) and execute `make run`, the file should be put in the same folder with `main.py`. Volume binding can be used to avoid copying the file, but taking docker as a supplementary solution, it's not implemented here.
 
 ## benchmark
@@ -55,7 +55,7 @@ the result
 1000 loops, best of 3: 684 usec per loop
 ```
 which means for executing once, it takes around 684 usec
-_Docker solution_
+_Docker solution_<br>
 Edit the `test_file` in [benchmark.py](benchmark.py#L4) and execute `make runbenchmark`, the file should be put in the same folder with `benchmark.py`. Again, volume binding is not implemented here.<br>
 the result
 ```
