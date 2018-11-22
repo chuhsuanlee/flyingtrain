@@ -53,15 +53,14 @@ the result
 ```
 1000 loops, best of 3: 684 usec per loop
 ```
-which means it takes around 684 usec for executing once<br><br>
-
+which means it takes around 684 usec for executing once<br>
 _Docker solution_<br>
-Edit the `test_file` in [benchmark.py](benchmark.py#L4) and execute `make runbenchmark`. Again, volume binding is not implemented here, so the file should be put in the same folder with `benchmark.py`. <br>
+Edit the `test_file` in [benchmark.py](benchmark.py#L4) and execute `make runbenchmark`. Again, volume binding is not implemented here, so the file should be put in the same folder with `benchmark.py`.<br>
 _the result of the docker solution_
 ```
 [0.6676740646362305, 0.6634271144866943, 0.6310489177703857]
 ```
-which means measuring execution time with 3 repeats counts and each count with 1000 executions, and for average it takes 663 usec per execution
+which means measuring execution time with 3 repeats counts and each count with 1000 executions. For average it takes 654 usec per execution
 
 ## Possible optimizations
 * First, for __benchmarking__, the build-in module `timeit` is used here. There are also some third party packages can be used such as [__memory_profiler__](https://pypi.org/project/memory_profiler/) for monitoring memory consumption of a process as well as line-by-line analysis.
