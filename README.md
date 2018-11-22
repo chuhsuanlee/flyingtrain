@@ -54,7 +54,7 @@ the result
 ```
 1000 loops, best of 3: 684 usec per loop
 ```
-which means for executing once, it takes around 684 usec
+which means for executing once, it takes around 684 usec<br><br>
 _Docker solution_<br>
 Edit the `test_file` in [benchmark.py](benchmark.py#L4) and execute `make runbenchmark`, the file should be put in the same folder with `benchmark.py`. Again, volume binding is not implemented here.<br>
 the result
